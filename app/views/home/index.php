@@ -40,6 +40,8 @@
   </button>
 </div>
 
+<h1>Selamat datang di web coffee dengan PHP+MVC</h1>
 <p>Halo nama saya, <?= $data['nama']; ?></p>
+
 
 </div>

@@ -1,5 +1,5 @@
 <div class="container mt-5">
-
+    <h3>Detail kopi:</h3>
     <div class="card" style="width: 18rem;">
     <div class="card-body">
         <h5 class="card-title"><?= $data['mhs']['nama_kopi']; ?></h5>
