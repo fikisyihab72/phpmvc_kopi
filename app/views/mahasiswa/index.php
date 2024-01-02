@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col-lg-6">
 
-            <h3>Daftar Mahasiswa</h3>
+            <h3>Daftar Kopi</h3>
             <ul class="list-group">
                 <?php foreach ($data['mhs'] as $mhs) : ?>
                     <li class="list-group-item">
@@ -56,7 +56,7 @@
       </div>
       <div class="modal-body">
         
-        <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post">
+        <form action="<?= BASEURL; ?>/mahasiswa/tambah" method="post" enctype='multipart/form-data'>
             <input type="hidden" name="id_kopi" id="id_kopi" >
             <div class="mb-3">
                 <label for="nama_kopi" class="form-label">Nama Kopi</label>
@@ -74,10 +74,13 @@
             </div>
 
             <div class="mb-3">
-                <label for="gambar_kopi" class="form-label">Gambar Kopi</label>
-                <input type="text" class="form-control" id="gambar_kopi" name="gambar_kopi" placeholder="Masukkan gambar...">
+                <!-- <label for="gambar_kopi" class="form-label">Gambar Kopi</label> -->
+                <label for="gambar_kopi" class="form-label">Unggah Gambar</label>
+                <input class="form-control" type="file" id="gambar_kopi" name="gambar_kopi" accept="image/*">
             </div>
-
+            <div class="mb-3">
+                <img id="image-preview" src="" alt="Image Preview">
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

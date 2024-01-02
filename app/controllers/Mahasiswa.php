@@ -25,6 +25,7 @@ class Mahasiswa extends Controller {
 
     public function tambah(){
         
+        
         if( $this->model('Mahasiswa_model')->tambahDataKopi($_POST) > 0 ){
             
             Flasher::setFlash('berhasil', 'ditambahkan', 'success');
@@ -40,8 +41,9 @@ class Mahasiswa extends Controller {
     }
 
     public function hapus($id_kopi){
-        
-        if( $this->model('Mahasiswa_model')->hapusDataKopi($id_kopi) > 0 ){
+        $data_lama['gambar_lama'] = $this->model('Mahasiswa_model')->getMahasiswaById($id_kopi);
+
+        if( $this->model('Mahasiswa_model')->hapusDataKopi($id_kopi, $data_lama) > 0 ){
             
             Flasher::setFlash('berhasil', 'dihapus', 'success');
             
@@ -53,16 +55,19 @@ class Mahasiswa extends Controller {
             header('Location: ' . BASEURL . '/mahasiswa');
             exit;
         }
+        
     }
 
 
-    public function getupdate(){
+    public function getupdate(){ // digunakan di script.js untuk ngambil data dan di tampilkan di text box
        echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST['id_kopi']));
     }
 
     public function update(){
-        
-        if( $this->model('Mahasiswa_model')->updateDataKopi($_POST) > 0 ){
+
+    $data_lama['gambar_lama'] = $this->model('Mahasiswa_model')->getMahasiswaById($_POST['id_kopi']);
+
+        if( $this->model('Mahasiswa_model')->updateDataKopi($_POST, $data_lama) > 0 ){
             
             Flasher::setFlash('berhasil', 'diupdate', 'success');
             
